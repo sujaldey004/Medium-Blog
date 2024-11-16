@@ -20,9 +20,7 @@ blogRouter.use('/*', async (c, next) => {
     const header = c.req.header("authorization") || "";
 
     try {
-        const token = header.split(" ")[1];
-
-        const response = await verify(token, c.env.JWT_SECRET);
+        const response = await verify(header, c.env.JWT_SECRET);
 
         if (response) {
             c.set("userId", String(response.id));
@@ -112,7 +110,18 @@ blogRouter.get('/bulk', async (c) => {
     }).$extends(withAccelerate())
 
     try {
-        const blogs = await prisma.post.findMany();
+        const blogs = await prisma.post.findMany({
+            select:{
+                content: true,
+                title: true,
+                id: true,
+                author: {
+                    select: {
+                        name: true
+                    }
+                }
+            }
+        });
 
         return c.json({
             blogs
@@ -138,6 +147,14 @@ blogRouter.get('/:id', async (c) => {
         const blog = await prisma.post.findFirst({
             where: {
                 id: id
+            },select:{
+                title: true,
+                content: true,
+                author: {
+                    select:{
+                        name:true
+                    }
+                }
             }
         })
 
