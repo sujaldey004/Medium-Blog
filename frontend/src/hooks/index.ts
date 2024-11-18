@@ -38,15 +38,18 @@ export const useBlogs = () => {
     const [blogs, setBlogs] = useState<Blog[]>([]);
 
     useEffect(() => {
-        axios.get(`${BACKEND_URL}/api/v1/blog/bulk`, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
-        }).then(response => {
+        const fetchBlogs = async () => {
+            const response = await axios.get(`${BACKEND_URL}/api/v1/blog/bulk`, {
+                headers: {
+                    Authorization: localStorage.getItem("token")
+                }
+            });
             setBlogs(response.data.blogs);
             setLoading(false);
-        })
-    }, [])
+        };
+
+        fetchBlogs();
+    }, []);
 
     return {
         loading,
