@@ -21,7 +21,7 @@ DATABASE_URL=""
 # [[d1_databases]]
 # binding = "DB"
 # database_name = "my-database"
-# database_id = ""
+# database_id = "prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiZjllNGM5ZTktYzJmNC00N2E1LWI0MzktNjkxN2ZkMjhkMjU2IiwidGVuYW50X2lkIjoiNWY1OWU3ZmIwZGE3MGI5YzAzMGI1YjEyODRkZjUzMjdlZWUwODIyZDNhNjQyOWE0NmU2YWQwMWZlMTRlZmEwNCIsImludGVybmFsX3NlY3JldCI6IjRjMDMwYWRiLWRjZGQtNGFmNS1iZWJhLWY5MTQ2ZTdhZDYwZSJ9.BWXTmdeP2Ifj4BvsBvs2-gtW2NcUsP4hekViLsaz9dg"
 
 # [ai]
 # binding = "AI"
@@ -31,4 +31,4 @@ DATABASE_URL=""
 # head_sampling_rate = 1
 
 
-JWT_SECRET=""
+JWT_SECRET="mysecretpassword"
